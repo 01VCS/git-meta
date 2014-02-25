@@ -22,3 +22,8 @@ b7bdb11e1b88ec10add69bfc6ab0c3a15d26652a
 https://gist.github.com/andris9/1978266#gistcomment-1178496
 Feb 24, 2014, 4:28 AM GMT-3
 a33f15269ba9209a5c5d9a87859318ff46991dda
+
+@Cojad
+https://gist.github.com/Cojad/9205547
+Feb 25, 2014, 7:31 AM GMT-3
+e8b5edeba0575386e458e8cd53803ab0b7c02fc8, 5da1e5193d4f2ce4df636d7315a31c1b053b63e9
