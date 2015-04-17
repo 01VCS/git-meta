@@ -32,3 +32,8 @@ e8b5edeba0575386e458e8cd53803ab0b7c02fc8, 5da1e5193d4f2ce4df636d7315a31c1b053b63
 https://gist.github.com/andris9/1978266#gistcomment-1193224
 Mar 18, 2014, 6:05 AM GMT-3
 5bc70c3319567253ef0d80b506dbec508f6c9c85
+
+@danny0838
+https://gist.github.com/andris9/1978266#gistcomment-1435202
+Apr 17, 2015, 2:55 AM GMT-3
+3ec11a1bc55eaedda7c917b2329db87d78fb2b95
