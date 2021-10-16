@@ -30,16 +30,23 @@ destination:
 @DaniellMesquita:
 
 > It is wonderful the collaboration level the humans can naturally organize 🥰
+
 > andris9 have started this and y'all started appending into it, respecting/including the previous contributions
+
 > All of that not on a git repository, but providing a frugal way into a gist!
+
 > 
 > In case of any interest/need (and personally this script've helped me as I have a compulsion for preserving dates), [here is a unified repository](https://github.com/Floflis/git-meta) with all of your contributions! 🎉🥳 (🎊 look like a beach bikini)
 > 
+
 > https://github.com/Floflis/git-meta
 > 
+
 > AntonioMeireles brayrobert201 stefanbj Explorer09 Cojad the-mars mkortleven-emg danny0838 bizonix
 > 
-> Sorry arno01 for not including yours, as it seemed very incomplete and cmw reported it doesn't worked.
+
+> Sorry arno01 for not including yours, as it seemed very incomplete and cmw reported it didn't worked.
+
 > 
 > I'd even preserved the authors on commits, so they appears as contributors 🧙‍♀️
 
