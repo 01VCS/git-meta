@@ -7,7 +7,7 @@
 # 2012-03-05 - added filetime, andris9
 #modified by n1k
 #from http://www.kerneltrap.org/mailarchive/git/2009/1/9/4654694
-: ${GIT_CACHE_META_FILE=.git_cache_meta}
+: ${GIT_CACHE_META_FILE=.gitmeta}
 case $@ in
     --store|-f|--stdout|-c)
     case $1 in --store|-f) exec > $GIT_CACHE_META_FILE; esac

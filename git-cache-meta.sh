@@ -24,7 +24,7 @@
 #              better quote file names; better directory listing; merge short opts; by Danny Lin (@danny0838)
 #2015-05-07 - for Mac OS X, `brew install findutils gawk coreutils`, by @bizonix
 
-: ${GIT_CACHE_META_FILE=.git_cache_meta}
+: ${GIT_CACHE_META_FILE=.gitmeta}
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     GNU='g'
