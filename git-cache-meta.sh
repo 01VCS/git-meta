@@ -4,6 +4,7 @@
 #Simpler than etckeeper, metastore, setgitperms, etc.
 #from http://www.kerneltrap.org/mailarchive/git/2009/1/9/4654694
 #modified by n1k
+#modified by the-mars
 # - save all files metadata not only from other users
 # - save numeric uid and gid
 #2012-03-05 - added filetime, by @andris9
@@ -18,7 +19,9 @@
 # - Added '-h' switch to chown and chgrp. This allows the script to handle symlinks.
 # - 'chmod' only if the file is not a symlink.
 # - All unusual filenames are properly escaped, thanks to '-exec ls --quoting-style=shell'. Notice that '--quoting-style=c' does not work as it seems when there are filenames that contain newlines.
+#2014-03-18 - @the-mars: store properties for dirs too
 
+pIFS=$IFS
 IFS='
 '
 
@@ -32,12 +35,18 @@ fi
 case $@ in
     --store|--stdout)
     case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
+    git ls-files -z | sed -z -r 's~/[^/]+$~~' | uniq -z | xargs -0 -I NAME find NAME \
+        \( -printf 'chown -h %U:%G ' -exec ls -d --quoting-style=shell '{}' \; \) , \
+        \( \! -type l -printf 'chmod %#m ' -exec ls -d --quoting-style=shell '{}' \; \) , \
+        \( -printf 'touch -c -h -m -d "%TY-%Tm-%Td %TH:%TM:%TS %Tz" ' -exec ls -d --quoting-style=shell '{}' \; \) , \
+        \( -printf 'touch -c -h -a -d "%AY-%Am-%Ad %AH:%AM:%AS %Az" ' -exec ls -d --quoting-style=shell '{}' \; \)
     git ls-files -z | xargs -0 -I NAME find NAME \
-        \( -printf 'chown -h %U ' -exec ls --quoting-style=shell '{}' \; \) , \
-        \( -printf 'chgrp -h %G ' -exec ls --quoting-style=shell '{}' \; \) , \
+        \( -printf 'chown -h %U:%G ' -exec ls --quoting-style=shell '{}' \; \) , \
         \( \! -type l -printf 'chmod %#m ' -exec ls --quoting-style=shell '{}' \; \) , \
         \( -printf 'touch -c -h -m -d "%TY-%Tm-%Td %TH:%TM:%TS %Tz" ' -exec ls --quoting-style=shell '{}' \; \) , \
         \( -printf 'touch -c -h -a -d "%AY-%Am-%Ad %AH:%AM:%AS %Az" ' -exec ls --quoting-style=shell '{}' \; \) ;;
     --apply) sh -e $GIT_CACHE_META_FILE;;
     *) 1>&2 echo "Usage: $0 --store|--stdout|--apply"; exit 1;;
 esac
+
+IFS=$pIFS
