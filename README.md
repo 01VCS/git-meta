@@ -47,7 +47,4 @@ destination:
 
 > Sorry arno01 for not including yours, as it seemed very incomplete and cmw reported it didn't worked.
 
-> 
-> I'd even preserved the authors on commits, so they appears as contributors 🧙‍♀️
-
 https://gist.github.com/andris9/1978266#gistcomment-3929036
