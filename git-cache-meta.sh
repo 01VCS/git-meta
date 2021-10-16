@@ -2,7 +2,6 @@
 
 #git-cache-meta -- simple file meta data caching and applying.
 #Simpler than etckeeper, metastore, setgitperms, etc.
-# 2014-02-25 change filetime from accessed time to modifpeied time by cojad
 #from http://www.kerneltrap.org/mailarchive/git/2009/1/9/4654694
 #modified by n1k
 #modified by the-mars
@@ -61,5 +60,9 @@ case $@ in
         \( -printf $TOUCH' -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
     } | $AWK 'BEGIN {FS="\0"}; {print $1 "'\''" gensub(/'\''/, "'\''\\\\'\'''\''", "g", $2) "'\''" }' ;;
     --apply) sh -e $GIT_CACHE_META_FILE;;
-    *) 1>&2 echo "Usage: $0 --store|--stdout|--apply"; exit 1;;
+    *) 1>&2 echo "Usage:"
+            echo "  $0 --store|--stdout|--apply";
+            echo "        --store   -f  store meta in file";
+            echo "        --stdout  -c  output to cosole";
+            echo "        --apply   -r  restore meta"; exit 1;;
 esac
