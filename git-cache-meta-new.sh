@@ -17,15 +17,6 @@ case $@ in
         \( -printf 'chown %U "%p"\n' \) \
         \( -printf 'chgrp %G "%p"\n' \) \
         \( -printf 'touch -c -d "%AY-%Am-%Ad %AH:%AM:%AS" "%p"\n' \) \
-        \( -printf 'stat -c -d "%AY-%Am-%Ad %AH:%AM:%AS" "%p"\n' \) \
-        \( -printf 'stat -c -d "%y" "%p"\n' \) \
-        \( -printf 'touch -c -d "%y" "%p"\n' \) \
-        \( -printf 'stat -c -d %y "%p"\n' \) \
-        \( -printf 'touch -c -d %y "%p"\n' \) \
-        \( -printf 'date -d "$(stat -c "%y" "%p" )" "+%Y-%m-%d:%H:%M:%S"\n' \) \
-        \( -printf 'stat -c "%y" "%p"\n' \) \
-        \( -printf 'touch -m "%AY-%Am-%Ad %AH:%AM:%AS" "%p"\n' \) \
-        \( -printf 'stat -c -d "%p"\n' \) \
         \( -printf 'chmod %#m "%p"\n' \) ;;
     --apply|-r) sh -e $GIT_CACHE_META_FILE;;
     *) 1>&2 echo "Usage:"

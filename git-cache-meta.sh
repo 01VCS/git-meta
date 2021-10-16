@@ -2,6 +2,7 @@
 
 #git-cache-meta -- simple file meta data caching and applying.
 #Simpler than etckeeper, metastore, setgitperms, etc.
+# 2014-02-25 change filetime from accessed time to modifpeied time by cojad
 #from http://www.kerneltrap.org/mailarchive/git/2009/1/9/4654694
 #modified by n1k
 #modified by the-mars
