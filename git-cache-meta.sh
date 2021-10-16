@@ -20,33 +20,31 @@
 # - 'chmod' only if the file is not a symlink.
 # - All unusual filenames are properly escaped, thanks to '-exec ls --quoting-style=shell'. Notice that '--quoting-style=c' does not work as it seems when there are filenames that contain newlines.
 #2014-03-18 - @the-mars: store properties for dirs too
-
-pIFS=$IFS
-IFS='
-'
+#2015-04-17 - time zone offset fallback; fix leading-dash-name error; avoid deeper find;
+#              better quote file names; better directory listing; merge short opts; by Danny Lin (@danny0838)
 
 : ${GIT_CACHE_META_FILE=.git_cache_meta}
-
-if [ -n "$(find -prune -printf '%Tz %Az\n' | tr -d ' 0-9+-')" ]; then
-echo "%z not supported in 'strftime' in C library." >&2
-exit 1
+: ${Tz:=$(find -prune -printf '%Tz')}
+: ${Tz:=$(date +%z)}
+if ! [ "$Tz" ]; then
+    echo "%z not supported in 'strftime' in C library." >&2
+    exit 1
 fi
 
 case $@ in
     --store|--stdout)
     case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
-    git ls-files -z | sed -z -r 's~/[^/]+$~~' | uniq -z | xargs -0 -I NAME find NAME \
-        \( -printf 'chown -h %U:%G ' -exec ls -d --quoting-style=shell '{}' \; \) , \
-        \( \! -type l -printf 'chmod %#m ' -exec ls -d --quoting-style=shell '{}' \; \) , \
-        \( -printf 'touch -c -h -m -d "%TY-%Tm-%Td %TH:%TM:%TS %Tz" ' -exec ls -d --quoting-style=shell '{}' \; \) , \
-        \( -printf 'touch -c -h -a -d "%AY-%Am-%Ad %AH:%AM:%AS %Az" ' -exec ls -d --quoting-style=shell '{}' \; \)
-    git ls-files -z | xargs -0 -I NAME find NAME \
-        \( -printf 'chown -h %U:%G ' -exec ls --quoting-style=shell '{}' \; \) , \
-        \( \! -type l -printf 'chmod %#m ' -exec ls --quoting-style=shell '{}' \; \) , \
-        \( -printf 'touch -c -h -m -d "%TY-%Tm-%Td %TH:%TM:%TS %Tz" ' -exec ls --quoting-style=shell '{}' \; \) , \
-        \( -printf 'touch -c -h -a -d "%AY-%Am-%Ad %AH:%AM:%AS %Az" ' -exec ls --quoting-style=shell '{}' \; \) ;;
+    { git ls-tree --name-only -rdz $(git write-tree) | xargs -0 -I NAME find ./NAME -maxdepth 0 \
+        \( -printf 'chown -h %U:%G \0%p\n' \) , \
+        \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
+        \( -printf 'touch -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
+        \( -printf 'touch -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
+      git ls-files -z | xargs -0 -I NAME find ./NAME -maxdepth 0 \
+        \( -printf 'chown -h %U:%G \0%p\n' \) , \
+        \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
+        \( -printf 'touch -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
+        \( -printf 'touch -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
+    } | awk 'BEGIN {FS="\0"}; {print $1 "'\''" gensub(/'\''/, "'\''\\\\'\'''\''", "g", $2) "'\''" }' ;;
     --apply) sh -e $GIT_CACHE_META_FILE;;
     *) 1>&2 echo "Usage: $0 --store|--stdout|--apply"; exit 1;;
 esac
-
-IFS=$pIFS
