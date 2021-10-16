@@ -1,3 +1,5 @@
-# git-cache-meta
+# git-meta
 
-simple file meta data caching and applying.
+Wanna git preserve your file dates?
+
+git-meta stores all files' metadata into '.git_cache_meta'!
