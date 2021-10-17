@@ -66,3 +66,5 @@ case $@ in
             echo "        --stdout  -c  output to cosole";
             echo "        --apply   -r  restore meta"; exit 1;;
 esac
+
+# new command - install git hook
