@@ -9,6 +9,18 @@ Also includes this fork gist: https://gist.github.com/Cojad/9205547/revisions
 
 ## Instructions
 
+### Initializing
+
+Copy git-meta.sh and init.sh into your repo, then type the following command:
+
+```bash
+bash init.sh
+```
+
+And done, it will be initiated!
+
+### Others
+
 source:
 
     git-meta --store      Cache all meta include numeric uid/gid/permission in .gitmeta
