@@ -45,8 +45,6 @@ if ! [ "$Tz" ]; then
     exit 1
 fi
 
-cd ../..
-
 case $@ in
     --store|--stdout)
     case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
