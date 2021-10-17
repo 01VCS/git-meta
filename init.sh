@@ -17,7 +17,7 @@ fi
                 cat >> .git/hooks/pre-commit <<EOF
 #!/bin/bash
 
-echo "Storing files' timestamp and other metadata..." && ls && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
+echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
 EOF
                 echo "Done!"
             else
@@ -25,7 +25,7 @@ EOF
                 cat > .git/hooks/pre-commit <<EOF
 #!/bin/bash
 
-echo "Storing files' timestamp and other metadata..." && ls && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
+echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
 EOF
                 echo "Done!"
 fi
