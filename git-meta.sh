@@ -67,4 +67,4 @@ case $@ in
             echo "        --apply   -r  restore meta"; exit 1;;
 esac
 
-# new command - install git hook - it can work! still working on it - NOW IT WILL WORK <3
+# new command - install git hook - it can work! still working on it - NOW IT WILL WORK <3 now, making it more perfect to work
