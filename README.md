@@ -19,6 +19,16 @@ bash init.sh
 
 And done, it will be initiated!
 
+### Updating
+
+Copy an up-to-date version of git-meta.sh and update.sh into your repo, then type the following command:
+
+```bash
+bash update.sh
+```
+
+Done!
+
 ### Others
 
 source:
