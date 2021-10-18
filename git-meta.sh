@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 #git-cache-meta -- simple file meta data caching and applying.
 #Simpler than etckeeper, metastore, setgitperms, etc.
