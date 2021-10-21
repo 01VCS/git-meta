@@ -48,12 +48,12 @@ fi
 case $@ in
     --store|--stdout)
     case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
-    { git ls-tree --name-only -rdz $(git write-tree) | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
+    { git diff --cached --name-only -z | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
         \( -printf 'chown -h %U:%G \0%p\n' \) , \
         \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
         \( -printf $TOUCH' -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
         \( -printf $TOUCH' -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
-      git ls-files -z | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
+      git ls-files -mz | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
         \( -printf 'chown -h %U:%G \0%p\n' \) , \
         \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
         \( -printf $TOUCH' -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
