@@ -15,12 +15,11 @@ fi
             then
                 echo ".git/hooks/pre-commit exists. Appending to it..."
                 cat >> .git/hooks/pre-commit <<EOF
-#!/bin/bash
-
 #01VCSHere
 
 echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
 EOF
+                
                 echo "Done!"
             else
                 echo ".git/hooks/pre-commit doesn't exist. Creating it..."
