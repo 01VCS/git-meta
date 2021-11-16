@@ -45,26 +45,52 @@ if ! [ "$Tz" ]; then
     exit 1
 fi
 
-case $@ in
-    --store|--stdout)
-    case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
-    { git diff --name-only -z HEAD | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
-        \( -printf 'chown -h %U:%G \0%p\n' \) , \
-        \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
-        \( -printf $TOUCH' -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
-        \( -printf $TOUCH' -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
-#      git ls-files -mz | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
-#        \( -printf 'chown -h %U:%G \0%p\n' \) , \
-#        \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
-#        \( -printf $TOUCH' -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
-#        \( -printf $TOUCH' -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
-    } | $AWK 'BEGIN {FS="\0"}; {print $1 "'\''" gensub(/'\''/, "'\''\\\\'\'''\''", "g", $2) "'\''" }' ;;
-    --apply) sh -e $GIT_CACHE_META_FILE;;
-    *) 1>&2 echo "Usage:"
-            echo "  $0 --store|--stdout|--apply";
-            echo "        --store   -f  store meta in file";
-            echo "        --stdout  -c  output to cosole";
-            echo "        --apply   -r  restore meta"; exit 1;;
+if [ ! -f .gitmeta ]
+   then # if the flag hasn't been placed, this is the first use
+      echo "Its your first time using git-meta on this repository!"
+      case $@ in
+          --store|--stdout)
+          case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
+          { git ls-tree --name-only -rdz $(git write-tree) | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
+              \( -printf 'chown -h %U:%G \0%p\n' \) , \
+              \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
+              \( -printf $TOUCH' -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
+              \( -printf $TOUCH' -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
+            git ls-files -z | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
+              \( -printf 'chown -h %U:%G \0%p\n' \) , \
+              \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
+              \( -printf $TOUCH' -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
+              \( -printf $TOUCH' -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
+          } | $AWK 'BEGIN {FS="\0"}; {print $1 "'\''" gensub(/'\''/, "'\''\\\\'\'''\''", "g", $2) "'\''" }' ;;
+          --apply) sh -e $GIT_CACHE_META_FILE;;
+          *) 1>&2 echo "Usage:"
+                  echo "  $0 --store|--stdout|--apply";
+                  echo "        --store   -f  store meta in file";
+                  echo "        --stdout  -c  output to cosole";
+                  echo "        --apply   -r  restore meta"; exit 1;;
 esac
-
-# new command - install git hook - it can work! still working on it - NOW IT WILL WORK <3 now, making it more perfect to work
+#Would you like to add all files that are on the working tree (even the not versioned ones)?
+#https://www.google.com/search?q=ls+all+files+recursively+except+some&client=ubuntu&hs=fhV&channel=fs&ei=HzWUYffIDKbN1sQPsu6n-AM&oq=ls+all+files+recursively+except+some&gs_lcp=Cgdnd3Mtd2l6EAM6BwgAEEcQsANKBAhBGABQFlgWYJUEaAFwAngAgAG0AYgBtAGSAQMwLjGYAQCgAQHIAQjAAQE&sclient=gws-wiz&ved=0ahUKEwi31M28-530AhWmppUCHTL3CT8Q4dUDCA0&uact=5
+   else
+      case $@ in
+          --store|--stdout)
+          case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
+          { git diff --name-only -z HEAD | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
+              \( -printf 'chown -h %U:%G \0%p\n' \) , \
+              \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
+              \( -printf $TOUCH' -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
+              \( -printf $TOUCH' -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
+#            git ls-files -mz | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
+#              \( -printf 'chown -h %U:%G \0%p\n' \) , \
+#              \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
+#              \( -printf $TOUCH' -hcmd "%TY-%Tm-%Td %TH:%TM:%TS '$Tz'" \0%p\n' \) , \
+#              \( -printf $TOUCH' -hcad "%AY-%Am-%Ad %AH:%AM:%AS '$Tz'" \0%p\n' \)
+          } | $AWK 'BEGIN {FS="\0"}; {print $1 "'\''" gensub(/'\''/, "'\''\\\\'\'''\''", "g", $2) "'\''" }' ;;
+          --apply) sh -e $GIT_CACHE_META_FILE;;
+          *) 1>&2 echo "Usage:"
+                  echo "  $0 --store|--stdout|--apply";
+                  echo "        --store   -f  store meta in file";
+                  echo "        --stdout  -c  output to cosole";
+                  echo "        --apply   -r  restore meta"; exit 1;;
+esac
+fi
