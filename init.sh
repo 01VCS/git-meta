@@ -7,6 +7,7 @@ if [ ! -e .git/hooks/git-meta.sh ]
         echo "- Initializing git-meta on your repo... 🧚"
         cp -r -f --preserve=all git-meta.sh .git/hooks
         if [ -e .git/hooks/git-meta.sh ]; then
+                chmod +x .git/hooks/git-meta.sh
                 echo "git-meta.sh has been placed!"
                 echo ""
                 echo "Initializing as git hook..."
@@ -19,6 +20,7 @@ fi
 
 echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
 EOF
+                chmod +x .git/hooks/pre-commit
                 
                 echo "Done!"
             else
@@ -30,6 +32,7 @@ EOF
 
 echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
 EOF
+                chmod +x .git/hooks/pre-commit
                 echo "Done!"
 fi
         echo "Done! git-meta has been initiated in your repo!"
