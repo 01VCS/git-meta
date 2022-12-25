@@ -49,7 +49,7 @@ destination:
 
 ## Announcement
 
-@DaniellMesquita:
+@DaniMesq:
 
 > It is wonderful the collaboration level the humans can naturally organize 🥰
 

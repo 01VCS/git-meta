@@ -1,3 +1,5 @@
-- init.sh: if no .git repo present, init using 01/gix
+- init.sh: if no .git repo present, init using 01
+
+- test on Termux
 
 - "git restore" should also restore timestamp
