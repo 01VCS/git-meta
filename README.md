@@ -47,6 +47,10 @@ destination:
     git-meta -r           Alias of --apply
     
 
+## ✨️ Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=01VCS/git-meta)](https://github.com/01VCS/git-meta/graphs/contributors)
+
 ## Announcement
 
 @DaniMesq:
