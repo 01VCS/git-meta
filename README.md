@@ -49,7 +49,11 @@ destination:
 
 ## ✨️ Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=01VCS/git-meta)](https://github.com/01VCS/git-meta/graphs/contributors)
+<!--[![Contributors](https://contrib.rocks/image?repo=01VCS/git-meta)](https://github.com/01VCS/git-meta/graphs/contributors)-->
+
+<a href="https://github.com/01VCS/git-meta/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=01VCS/git-meta&max=500" />
+</a>
 
 ## Announcement
 
