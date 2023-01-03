@@ -1,14 +1,15 @@
 #!/bin/bash
 
-if [ ! -e .git/hooks/git-meta.sh ]
+if [ ! -f .git/hooks/git-meta ]
     then
         echo ""
         echo "It looks like its your first time using this! 🤗"
         echo "- Initializing git-meta on your repo... 🧚"
-        cp -r -f --preserve=all git-meta.sh .git/hooks
-        if [ -e .git/hooks/git-meta.sh ]; then
-                chmod +x .git/hooks/git-meta.sh
-                echo "git-meta.sh has been placed!"
+#        cp -r -f --preserve=all git-meta.sh .git/hooks
+        ln -s /usr/bin/git-meta .git/hooks/git-meta
+        if [ -f .git/hooks/git-meta ]; then
+                chmod +x .git/hooks/git-meta
+                echo "git-meta has been placed!"
                 echo ""
                 echo "Initializing as git hook..."
 fi
@@ -18,7 +19,7 @@ fi
                 cat >> .git/hooks/pre-commit <<EOF
 #01VCSHere
 
-echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
+echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta --store && git add .gitmeta && echo "Done. Meta has been preserved!"
 EOF
                 chmod +x .git/hooks/pre-commit
                 
@@ -30,7 +31,7 @@ EOF
 
 #01VCSHere
 
-echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta.sh --store && git add .gitmeta && echo "Done. Meta has been preserved!"
+echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta --store && git add .gitmeta && echo "Done. Meta has been preserved!"
 EOF
                 chmod +x .git/hooks/pre-commit
                 echo "Done!"
