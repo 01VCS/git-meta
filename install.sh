@@ -4,10 +4,11 @@ echo "Installing git-meta syswide..."
 
 #sudo cp -f ethgas /usr/bin/ethgas
 
-if [ ! -e /usr/lib/git-meta ]; then sudo mkdir /usr/lib/git-meta; fi
+if [ ! -e /usr/lib/01 ]; then sudo mkdir /usr/lib/01; fi
+if [ ! -e /usr/lib/01/git-meta ]; then sudo mkdir /usr/lib/01/git-meta; fi
 sudo cp -f git-meta /usr/bin/
-sudo cp -f init.sh /usr/lib/git-meta/
-sudo cp -f README.md /usr/lib/git-meta/
+sudo cp -f init.sh /usr/lib/01/git-meta/
+sudo cp -f README.md /usr/lib/01/git-meta/
 
 #installfail(){
 #   echo "Installation has failed."
@@ -22,7 +23,7 @@ if [ -f /usr/bin/git-meta ];then
 #      installfail
 fi
 
-if [ -f /usr/lib/git-meta/init.sh ];then
+if [ -f /usr/lib/01/git-meta/init.sh ];then
    echo "- Turning git-meta's init.sh into an executable..."
-   sudo chmod +x /usr/lib/git-meta/init.sh
+   sudo chmod +x /usr/lib/01/git-meta/init.sh
 fi
