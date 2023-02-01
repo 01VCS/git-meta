@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "Installing git-meta's dependencies..."
+sudo apt install gawk #from https://askubuntu.com/a/1187678
+
 echo "Installing git-meta syswide..."
 
 #sudo cp -f ethgas /usr/bin/ethgas
