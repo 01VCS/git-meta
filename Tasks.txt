@@ -1,4 +1,5 @@
 - store current git branch name
+- settings: option to run folderstamp on every commit
 
 - init.sh: if no .git repo present, init using 01
 
