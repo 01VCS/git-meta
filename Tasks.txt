@@ -1,3 +1,5 @@
+- store current git branch name
+
 - init.sh: if no .git repo present, init using 01
 
 - test on Termux
