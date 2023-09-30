@@ -1,2 +1,15 @@
 #!/bin/bash
-if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+#: ${GIT_CID_META_FILE=.gitmeta-cid}
+#if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+#if [ ! -f .gitmeta-cid ]; then touch .gitmeta-cid; fi
+#if [ ! -f $GIT_CID_META_FILE ]; then touch $GIT_CID_META_FILE; fi
+rocketlaunch_dir=`pwd` #from https://unix.stackexchange.com/a/52919/470623
+#echo "This folder: $rocketlaunch_dir"
+#if [ ! -f "$rocketlaunch_dir""/""$GIT_CID_META_FILE" ]; then touch "$rocketlaunch_dir""/""$GIT_CID_META_FILE"; fi
+#if [ ! -f "$rocketlaunch_dir""/"".gitmeta-cid" ]; then touch "$rocketlaunch_dir""/"".gitmeta-cid"; fi
+#echo "DEBUG: ""$rocketlaunch_dir""/"".gitmeta-cid"
+#touch "$rocketlaunch_dir""/"".gitmeta-cid"
+#touch "$rocketlaunch_dir""/""gitmeta-cid"
+if [ ! -f "gitmeta-cid" ]; then touch "gitmeta-cid"; fi
+#mv gitmeta-cid .gitmeta-cid
+mv "gitmeta-cid" ".cid-gitmeta"
