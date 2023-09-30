@@ -44,6 +44,12 @@ echo "commit ""$commit_cid" > .gitmeta #use ">" instead of ">>" as a way of empt
 echo "Branch: ""$current_branch" >> .gitmeta
 echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
 
+# If the .eth file exists, sign the commit data with the Ethereum account
+if [ -f ".git/hooks/.eth" ]; then
+    eth_account=$(cat .git/hooks/.eth)
+    signature=$(geth --exec "web3.personal.sign(web3.toHex('$commit_cid'), '$eth_account', null)" attach)
+fi
+
 bash .git/hooks/git-meta --store
 git add .gitmeta
 git add .gitmeta-cid
@@ -83,6 +89,12 @@ commit_cid=$(ipfs add -q --only-hash .gitmeta-cid)
 echo "commit ""$commit_cid" > .gitmeta #use ">" instead of ">>" as a way of emptying .gitmeta before writing new commit data
 echo "Branch: ""$current_branch" >> .gitmeta
 echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
+
+# If the .eth file exists, sign the commit data with the Ethereum account
+if [ -f ".git/hooks/.eth" ]; then
+    eth_account=$(cat .git/hooks/.eth)
+    signature=$(geth --exec "web3.personal.sign(web3.toHex('$commit_cid'), '$eth_account', null)" attach)
+fi
 
 bash .git/hooks/git-meta --store
 git add .gitmeta
