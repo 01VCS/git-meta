@@ -36,7 +36,9 @@ EOF
                 chmod +x .git/hooks/pre-commit
                 echo "Done!"
 fi
+        if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
         echo "Done! git-meta has been initiated in your repo!"
     else
+        if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
         echo "git-meta is already initiated in your repo."
 fi
