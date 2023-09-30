@@ -233,3 +233,186 @@ ipfs add --only-hash $tmp_fifo
 rm $tmp_fifo
 
 This script now includes the commit date in the hash calculation. The date is retrieved using git log -1 --pretty=%cd, which gets the date of the last commit.
+
+
+
+
+
+
+
+
+
+From the prepare-commit-msg hook, I can access the current commit msg from "cat $1". How to do the same for the wannabe commit date?
+
+
+
+
+
+
+
+
+In a prepare-commit-msg hook, the commit date isn't available yet because the commit hasn't been finalized. However, you can approximate the commit date by getting the current date and time.
+
+Here's how you can modify the script to include the current date and time in the hash calculation:
+
+#!/bin/bash
+
+# Create a temporary named pipe
+tmp_fifo=$(mktemp -u)
+mkfifo $tmp_fifo
+
+# Get the commit author and message
+commit_author=$(git config user.name)
+commit_message=$(cat $1)
+
+# Get the current date and time
+commit_date=$(date)
+
+# Write the commit metadata to the pipe
+echo "Author: $commit_author" > $tmp_fifo &
+echo "Date: $commit_date" > $tmp_fifo &
+echo "Message: $commit_message" > $tmp_fifo &
+
+# Extract co-authors from the commit message and write them to the pipe
+co_authors=$(echo "$commit_message" | grep 'Co-authored-by:' | cut -d':' -f2-)
+if [ ! -z "$co_authors" ]; then
+    echo "Co-authors: $co_authors" > $tmp_fifo &
+fi
+
+# Get a list of all staged files
+staged_files=$(git diff --cached --name-only)
+
+# Write the contents of each staged file to the pipe
+for file in $staged_files; do
+    if [ -f "$file" ]; then
+        cat "$file" > $tmp_fifo &
+    fi
+done
+
+# Calculate the IPFS CID from the data in the pipe
+ipfs add --only-hash $tmp_fifo
+
+# Clean up
+rm $tmp_fifo
+
+This script now uses date to get the current date and time, and cat $1 to get the commit message from the prepare-commit-msg hook.
+
+
+
+
+
+
+
+
+
+
+co_authors=$(echo "$commit_message" | grep '--author=' | cut -d'=' -f2-)
+
+Grep is showing error.
+So how to detect when a second author is being used with "--author="? Both its name + email!
+
+
+
+
+
+
+The --author option is used with the git commit command to specify an author for the commit. It's not typically included in the commit message, so you can't extract it using grep from the commit message.
+
+However, if you're using the --author option in your workflow and want to include this information in the hash calculation, you could modify your script to accept an author as a command-line argument. Here's how you could do it:
+
+#!/bin/bash
+
+# Create a temporary named pipe
+tmp_fifo=$(mktemp -u)
+mkfifo $tmp_fifo
+
+# Get the commit author and message
+commit_author=$(git config user.name)
+if [ ! -z "$1" ]; then
+    commit_author="$1"
+fi
+commit_message=$(cat $2)
+
+# Get the current date and time
+commit_date=$(date)
+
+# Write the commit metadata to the pipe
+echo "Author: $commit_author" > $tmp_fifo &
+echo "Date: $commit_date" > $tmp_fifo &
+echo "Message: $commit_message" > $tmp_fifo &
+
+# Get a list of all staged files
+staged_files=$(git diff --cached --name-only)
+
+# Write the contents of each staged file to the pipe
+for file in $staged_files; do
+    if [ -f "$file" ]; then
+        cat "$file" > $tmp_fifo &
+    fi
+done
+
+# Calculate the IPFS CID from the data in the pipe
+ipfs add --only-hash $tmp_fifo
+
+# Clean up
+rm $tmp_fifo
+
+Now, you can run your script with an author as a command-line argument like this:
+
+./pre-commit "Author Name <author@example.com>" $1
+
+This will override the author retrieved from git config user.name with the one provided as a command-line argument. The commit message is now expected to be in the second argument ($2).
+
+
+
+
+
+
+
+
+
+The prepare-commit-msg hook doesn't have direct access to the --author option used with the git commit command. However, if you're using the --author option to specify co-authors, you could include this information in the commit message and then extract it in the hook.
+
+Here's how you can modify the script to extract co-authors from the commit message:
+
+#!/bin/bash
+
+# Create a temporary named pipe
+tmp_fifo=$(mktemp -u)
+mkfifo $tmp_fifo
+
+# Get the commit author and message
+commit_author=$(git config user.name)
+commit_message=$(cat $1)
+
+# Get the current date and time
+commit_date=$(date)
+
+# Write the commit metadata to the pipe
+echo "Author: $commit_author" > $tmp_fifo &
+echo "Date: $commit_date" > $tmp_fifo &
+echo "Message: $commit_message" > $tmp_fifo &
+
+# Extract co-authors from the commit message and write them to the pipe
+co_authors=$(echo "$commit_message" | grep -oP '(?<=Co-authored-by: ).*')
+if [ ! -z "$co_authors" ]; then
+    echo "Co-authors: $co_authors" > $tmp_fifo &
+fi
+
+# Get a list of all staged files
+staged_files=$(git diff --cached --name-only)
+
+# Write the contents of each staged file to the pipe
+for file in $staged_files; do
+    if [ -f "$file" ]; then
+        cat "$file" > $tmp_fifo &
+    fi
+done
+
+# Calculate the IPFS CID from the data in the pipe
+ipfs add --only-hash $tmp_fifo
+
+# Clean up
+rm $tmp_fifo
+
+This script uses the grep -oP '(?<=Co-authored-by: ).*' command to extract co-authors from the commit message. It assumes that co-authors are listed in the message with the format Co-authored-by: Name <email>.
