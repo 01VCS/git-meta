@@ -1,0 +1,90 @@
+#!/bin/bash
+
+#01VCSHere
+
+echo "Storing files' timestamp, CID/hash; and other files/commit's metadata..."
+
+# Create a temporary named pipe
+#if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+#if [ ! -f ".gitmeta-cid" ]; then
+#   touch .gitmeta-cid
+#fi
+#touch ".gitmeta-cid"
+#echo > ".gitmeta-cid"
+#
+#tmp_fifo=$(mktemp -u)
+#mkfifo $tmp_fifo
+
+# Get the commit author and message
+commit_author="$(git config user.name)"" <""$(git config user.email)"">" 
+#commit_date=$(git log -1 --pretty=%cd) #WRONG
+#commit_message=$(git log -1 --pretty=%B) #WRONG
+commit_message=$(cat $1)
+current_branch=$(git rev-parse --abbrev-ref HEAD) #from https://dev.to/anibalardid/how-to-check-commit-message-and-branch-name-with-git-hooks-without-any-new-installation-n34
+# https://github.com/typicode/husky/discussions/1171
+#-
+# Get the current date and time
+#commit_date=$(date)
+
+#rocketlaunch_dir=`pwd` #from https://unix.stackexchange.com/a/52919/470623
+#echo "This folder: $rocketlaunch_dir"
+
+#echo "" > "$rocketlaunch_dir""/.gitmeta-cid"
+#bash ./.git/hooks/pre-commit-boot --store
+#echo > .gitmeta-cid
+if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+tmp_fifo=".gitmeta-cid"
+
+# Write the commit metadata to the pipe
+#echo "Author: $commit_author" >> $tmp_fifo &
+#echo "git-metaDate: $commit_date" >> $tmp_fifo &
+#echo "Message: $commit_message" >> $tmp_fifo &
+echo "Branch: $current_branch" >> $tmp_fifo &
+
+# Extract co-authors from the commit message and write them to the pipe
+#co_authors=$(echo "$commit_message" | grep '--author=' | cut -d'=' -f2-) #doesn't work
+#if [ ! -z "$co_authors" ]; then
+#    echo "Co-authors: $co_authors" >> $tmp_fifo &
+#fi
+
+# Get a list of all staged files
+staged_files=$(git diff --cached --name-only)
+
+# Hash (IPFS CID) the contents of each staged file, to the pipe
+for file in $staged_files; do
+    if [ -f "$file" ]; then
+        #cat "$file" >> $tmp_fifo &
+        file_cid=$(ipfs add -q --only-hash "$file")
+        echo "$file"": ""$file_cid" >> $tmp_fifo &
+    fi
+done
+
+# Calculate the IPFS CID from the data in the pipe
+#commit_content=$(cat $tmp_fifo)
+commit_cid=$(ipfs add -q --only-hash $tmp_fifo) #this $tmp_fifo reading runs once; then anything following this will hang the script undefinitedly
+#commit_content=$(cat $tmp_fifo)
+#commit_content=$($tmp_fifo)
+echo "commit ""$commit_cid" > .gitmeta #use ">" instead of ">>" as a way of emptying .gitmeta before writing new commit data
+#echo "Author(s): ""$commit_author"" $co_authors" >> .gitmeta
+#echo "Author(s): ""$commit_author" >> .gitmeta
+#echo "git-metaDate: ""$commit_date" >> .gitmeta
+#echo "Message(s): ""$commit_message" >> .gitmeta
+echo "Branch: ""$current_branch" >> .gitmeta
+echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
+
+#echo "DEBUGtmp FIFO:"
+#echo "------------------------------"
+#echo "$tmp_fifo"
+#cat $tmp_fifo
+#echo "$commit_content"
+#cat $tmp_fifo
+#echo "------------------------------"
+
+# Clean up
+#rm $tmp_fifo
+
+bash ./.git/hooks/git-meta.sh --store
+
+git add .gitmeta
+git add .gitmeta-cid
+echo "Done. Meta has been preserved!"
