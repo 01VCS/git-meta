@@ -50,7 +50,7 @@ if [ ! -f .gitmeta ]
       echo "Its your first time using git-meta on this repository!"
       case $@ in
           --store|--stdout)
-          case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
+          case $1 in --store) exec >> $GIT_CACHE_META_FILE; esac
           { git ls-tree --name-only -rdz $(git write-tree) | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
               \( -printf 'chown -h %U:%G \0%p\n' \) , \
               \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
@@ -74,7 +74,7 @@ esac
    else
       case $@ in
           --store|--stdout)
-          case $1 in --store) exec > $GIT_CACHE_META_FILE; esac
+          case $1 in --store) exec >> $GIT_CACHE_META_FILE; esac
           { git diff --name-only -z HEAD | xargs -0 -I NAME $FIND ./NAME -maxdepth 0 \
               \( -printf 'chown -h %U:%G \0%p\n' \) , \
               \( \! -type l -printf 'chmod %#m \0%p\n' \) , \
