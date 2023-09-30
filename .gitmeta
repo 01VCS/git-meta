@@ -1,16 +1,8 @@
-commit QmbG6x7WhBzZ4y8bM1xJreCQgk6tSAXUxvos8zxYN5jP2s
+commit QmQxDJX5HRppYgN298s35RsCXDoPxspe7sGzhU6y6pv8RT
 Author(s): Daniella Mesquita <mesquitadaniella@proton.me>
-git-metaDate: sáb 30 set 2023 16:24:21 -03
+git-metaDate: sáb 30 set 2023 16:27:28 -03
 Message(s): final test
 Branch: main
 
 ------------------------------
 
-chown -h 1000:1000 './.gitmeta'
-chmod 0777 './.gitmeta'
-/usr/bin/touch -hcmd "2023-09-30 16:24:22.0083043000 -0300" './.gitmeta'
-/usr/bin/touch -hcad "2023-09-30 16:24:22.0100860000 -0300" './.gitmeta'
-chown -h 1000:1000 './test'
-chmod 0777 './test'
-/usr/bin/touch -hcmd "2023-09-30 16:24:12.5382712000 -0300" './test'
-/usr/bin/touch -hcad "2023-09-30 16:24:12.5455307000 -0300" './test'
