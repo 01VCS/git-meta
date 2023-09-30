@@ -39,7 +39,7 @@ tmp_fifo=".gitmeta-cid"
 #echo "Author: $commit_author" >> $tmp_fifo &
 #echo "git-metaDate: $commit_date" >> $tmp_fifo &
 #echo "Message: $commit_message" >> $tmp_fifo &
-echo "Branch: $current_branch" >> $tmp_fifo &
+echo "Branch: $current_branch" > $tmp_fifo & #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
 
 # Extract co-authors from the commit message and write them to the pipe
 #co_authors=$(echo "$commit_message" | grep '--author=' | cut -d'=' -f2-) #doesn't work
