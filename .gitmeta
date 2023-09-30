@@ -1,17 +1,20 @@
-commit QmT9iW7q8g13EFS9QNzCJrmNePqzTvuLVjGAp1FsDEUoCU
-Branch: main
-
-------------------------------
-
 chown -h 1000:1000 './.gitmeta'
 chmod 0777 './.gitmeta'
-/usr/bin/touch -hcmd "2023-09-30 18:37:12.3085676000 -0300" './.gitmeta'
-/usr/bin/touch -hcad "2023-09-30 18:37:12.3102698000 -0300" './.gitmeta'
+/usr/bin/touch -hcmd "2023-09-30 18:46:39.5798411000 -0300" './.gitmeta'
+/usr/bin/touch -hcad "2023-09-30 18:46:39.5610403000 -0300" './.gitmeta'
 chown -h 1000:1000 './.gitmeta-cid'
 chmod 0777 './.gitmeta-cid'
-/usr/bin/touch -hcmd "2023-09-30 18:37:12.2527201000 -0300" './.gitmeta-cid'
-/usr/bin/touch -hcad "2023-09-30 18:37:12.1865224000 -0300" './.gitmeta-cid'
-chown -h 1000:1000 './pre-commit'
-chmod 0777 './pre-commit'
-/usr/bin/touch -hcmd "2023-09-30 18:36:44.4525679000 -0300" './pre-commit'
-/usr/bin/touch -hcad "2023-09-30 18:36:55.0196926000 -0300" './pre-commit'
+/usr/bin/touch -hcmd "2023-09-30 18:46:39.5019202000 -0300" './.gitmeta-cid'
+/usr/bin/touch -hcad "2023-09-30 18:46:39.2071304000 -0300" './.gitmeta-cid'
+chown -h 1000:1000 './Tasks.txt'
+chmod 0777 './Tasks.txt'
+/usr/bin/touch -hcmd "2023-09-30 18:44:34.0940868000 -0300" './Tasks.txt'
+/usr/bin/touch -hcad "2023-09-30 18:44:39.0285642000 -0300" './Tasks.txt'
+chown -h 1000:1000 './experiment/PromptTalks.txt'
+chmod 0777 './experiment/PromptTalks.txt'
+/usr/bin/touch -hcmd "2023-09-30 18:43:11.5029766000 -0300" './experiment/PromptTalks.txt'
+/usr/bin/touch -hcad "2023-09-30 18:44:39.1234214000 -0300" './experiment/PromptTalks.txt'
+chown -h 1000:1000 './init.sh'
+chmod 0777 './init.sh'
+/usr/bin/touch -hcmd "2023-09-30 18:43:03.5363889000 -0300" './init.sh'
+/usr/bin/touch -hcad "2023-09-30 18:43:03.5425582000 -0300" './init.sh'

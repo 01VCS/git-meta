@@ -1,8 +1,9 @@
-- store current git branch name
+- init.sh: use /hooks folder rather than hardwriting!
+
 - settings: option to run folderstamp on every commit
 
 - init.sh: if no .git repo present, init using 01
 
 - test on Termux
 
-- "git restore" should also restore timestamp
+- "git restore" should also restore file timestamps! (same for git checkout)

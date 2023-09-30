@@ -1,2 +1,6 @@
 Branch: main
-pre-commit: QmX7cFx95rniaNxipAs1Ua4kEGJ7ba6V7AkLicuUMsEaHM
+.gitmeta: QmWUusu3t1rBeoZKMr2GbKC2XXULRfDVH6ap2LvVvHREzD
+.gitmeta-cid: QmdDcp9nwrsTFXUBek9F4QEMSmrwXUSXj2JskWVgwxAD5d
+Tasks.txt: QmTDLUjbathWhrEPSfdpnEmffUdko4cgq3xR97RBWt2aNC
+experiment/PromptTalks.txt: QmfT4SwWsU7SBEw3KJA6kt1cpx8jt8taQ3a336zCTot3JU
+init.sh: QmZnqNQ314in74rk9R8foCeTkroXE7MtrGTrHEnW65PkbB

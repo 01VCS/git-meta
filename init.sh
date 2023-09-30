@@ -19,7 +19,35 @@ fi
                 cat >> .git/hooks/pre-commit <<EOF
 #01VCSHere
 
-echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta --store && git add .gitmeta && echo "Done. Meta has been preserved!"
+echo "Storing files' timestamp, CID/hash; and other files/commit's metadata..."
+
+commit_author="$(git config user.name)"" <""$(git config user.email)"">" 
+commit_message=$(cat $1)
+current_branch=$(git rev-parse --abbrev-ref HEAD) #from https://dev.to/anibalardid/how-to-check-commit-message-and-branch-name-with-git-hooks-without-any-new-installation-n34
+# https://github.com/typicode/husky/discussions/1171
+
+if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+
+echo "Branch: $current_branch" > .gitmeta-cid & #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
+# Get a list of all staged files
+staged_files=$(git diff --cached --name-only)
+# Hash (IPFS CID) the contents of each staged file, to the pipe
+for file in $staged_files; do
+    if [ -f "$file" ]; then
+        file_cid=$(ipfs add -q --only-hash "$file")
+        echo "$file"": ""$file_cid" >> .gitmeta-cid &
+    fi
+done
+
+commit_cid=$(ipfs add -q --only-hash .gitmeta-cid)
+echo "commit ""$commit_cid" > .gitmeta #use ">" instead of ">>" as a way of emptying .gitmeta before writing new commit data
+echo "Branch: ""$current_branch" >> .gitmeta
+echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
+
+bash .git/hooks/git-meta --store
+git add .gitmeta
+git add .gitmeta-cid
+echo "Done. Meta has been preserved!"
 EOF
                 chmod +x .git/hooks/pre-commit
                 
@@ -31,14 +59,42 @@ EOF
 
 #01VCSHere
 
-echo "Storing files' timestamp and other metadata..." && bash .git/hooks/git-meta --store && git add .gitmeta && echo "Done. Meta has been preserved!"
+echo "Storing files' timestamp, CID/hash; and other files/commit's metadata..."
+
+commit_author="$(git config user.name)"" <""$(git config user.email)"">" 
+commit_message=$(cat $1)
+current_branch=$(git rev-parse --abbrev-ref HEAD) #from https://dev.to/anibalardid/how-to-check-commit-message-and-branch-name-with-git-hooks-without-any-new-installation-n34
+# https://github.com/typicode/husky/discussions/1171
+
+if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+
+echo "Branch: $current_branch" > .gitmeta-cid & #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
+# Get a list of all staged files
+staged_files=$(git diff --cached --name-only)
+# Hash (IPFS CID) the contents of each staged file, to the pipe
+for file in $staged_files; do
+    if [ -f "$file" ]; then
+        file_cid=$(ipfs add -q --only-hash "$file")
+        echo "$file"": ""$file_cid" >> .gitmeta-cid &
+    fi
+done
+
+commit_cid=$(ipfs add -q --only-hash .gitmeta-cid)
+echo "commit ""$commit_cid" > .gitmeta #use ">" instead of ">>" as a way of emptying .gitmeta before writing new commit data
+echo "Branch: ""$current_branch" >> .gitmeta
+echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
+
+bash .git/hooks/git-meta --store
+git add .gitmeta
+git add .gitmeta-cid
+echo "Done. Meta has been preserved!"
 EOF
                 chmod +x .git/hooks/pre-commit
                 echo "Done!"
 fi
-        if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+        #if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
         echo "Done! git-meta has been initiated in your repo!"
     else
-        if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+        #if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
         echo "git-meta is already initiated in your repo."
 fi
