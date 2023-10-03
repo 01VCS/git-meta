@@ -1,3 +1,4 @@
+- .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
 - init.sh: complete the ETH commit signing feature! (author eth account + commit cid signature -> .gitmeta!)
 
 - init.sh: use /hooks folder rather than hardwriting!
