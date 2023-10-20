@@ -7,6 +7,8 @@ git-meta stores all files' metadata into '.gitmeta'! On every commit!
 Based on a gist: https://gist.github.com/andris9/1978266
 Also includes this fork gist: https://gist.github.com/Cojad/9205547/revisions
 
+**Update 20/10/2023**: in the 1st place: don't worry, you can still install git-meta standalone as you used to. In the 2nd place: git-meta now's part of a bigger project: [01](https://github.com/01VCS/01), a VCS layer2/aggregator. By installing 01, you're installing git-meta ready to come built-in every time you create an new repo!
+
 ## Instructions
 
 ### Initializing
