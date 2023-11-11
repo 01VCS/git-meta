@@ -2,9 +2,9 @@
 
 Easy solution to:
 
- - maintain correct git file dates and times (and zones and
- -  microseconds),  keep the correct file owner and group (by name, not
- -  number) keep file permissions correct
+ - maintain correct git file dates and times (and zones and microseconds),
+ - keep the correct file owner and group (by name, not number), and
+ - keep file permissions correct
 
 ## Synopsis
 
