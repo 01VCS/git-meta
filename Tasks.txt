@@ -10,3 +10,4 @@
 - test on Termux
 
 - "git restore" should also restore file timestamps! (same for git checkout)
+01 git-meta endgame: parse .git-meta and find tree files on it on every commit, then apply timestamps on checkout!
