@@ -1,5 +1,7 @@
 - before going on the next tasks: make this project in the pla-woke-license, preventing use in projects related to ppl like Elon Musk; GPT should help write it in a conciser manner
 
+- Better calc of each contributors' added lines/code. As seen here: https://github.com/01VCS/git-meta/graphs/contributors. So, make better credit commits, with all automatic code, attributed to each author, from the original gist.
+
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
 - init.sh: complete the ETH commit signing feature! (author eth account + commit cid signature -> .gitmeta!)
 
