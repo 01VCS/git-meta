@@ -1,0 +1,1 @@
+- CursorGPT analyse this and how to build (in Bash) from scratch. D-NT-DSC-TH-PRP!
