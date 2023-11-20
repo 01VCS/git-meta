@@ -1,0 +1,32 @@
+This folder: /media/daniella/B/git/nerdy DAOs/01VCS/git-meta-fork
+
+  File: ./git-meta.pl
+  Size: 20837     	Blocks: 48         IO Block: 4096   regular file
+Device: 8,20	Inode: 4303819     Links: 1
+Access: (0775/-rwxrwxr-x)  Uid: ( 1000/daniella)   Gid: ( 1000/daniella)
+Access: 2023-11-19 22:09:47.274934900 -0300
+Modify: 2023-11-19 22:09:34.982358700 -0300
+Change: 2023-11-19 22:09:34.982358700 -0300
+ Birth: 2023-11-19 22:09:34.982358700 -0300
+IPFS hash: QmSaVfb9bDrbGAxTgPLDHyfqy6E1jP76RafggTT7ubQSwg
+------------------------------
+  File: ./LICENSE
+  Size: 1211      	Blocks: 8          IO Block: 4096   regular file
+Device: 8,20	Inode: 4303817     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/daniella)   Gid: ( 1000/daniella)
+Access: 2023-11-19 22:09:47.274934900 -0300
+Modify: 2023-11-19 22:09:34.982358700 -0300
+Change: 2023-11-19 22:09:34.982358700 -0300
+ Birth: 2023-11-19 22:09:34.982358700 -0300
+IPFS hash: QmcPqwimTjqA7EhBZfDubtZ8r5vPeWtKASHk387CZ6RW76
+------------------------------
+  File: ./README.md
+  Size: 1573      	Blocks: 8          IO Block: 4096   regular file
+Device: 8,20	Inode: 4303818     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/daniella)   Gid: ( 1000/daniella)
+Access: 2023-11-19 22:09:47.274934900 -0300
+Modify: 2023-11-19 22:09:34.982358700 -0300
+Change: 2023-11-19 22:09:34.982358700 -0300
+ Birth: 2023-11-19 22:09:34.982358700 -0300
+IPFS hash: QmRx3zdpWBKx7KQfYRS4mDBCEYFeY7CGRG1rzpftofoEvD
+------------------------------
