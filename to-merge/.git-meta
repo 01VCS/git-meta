@@ -1,4 +1,0 @@
-# octal file mode, owner, group, mtime, atime, spare1, spare2, filename	# https://github.com/gitcnd/git-meta.git v0.20231111
-# last: gitcnd <cnd@geek.net.au> at 2023-11-11 14:52:15 +0000
-0644,cnd,cnd,2023-11-11 14:47:50.0807 +0000,2023-11-11 14:50:13.28482 +0000,,,README.md
-0755,cnd,cnd,2023-11-11 14:51:43.42627 +0000,2023-11-11 14:52:00.54417 +0000,,,git-meta.pl
