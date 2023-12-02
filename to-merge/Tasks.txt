@@ -1,1 +1,3 @@
 - CursorGPT analyse this and how to build (in Bash) from scratch. D-NT-DSC-TH-PRP!
+
+Full info about: https://github.com/01VCS/git-meta/issues/11
