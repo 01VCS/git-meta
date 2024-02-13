@@ -30,9 +30,9 @@ if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
 
 echo "Branch: $current_branch" > .gitmeta-cid & #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
 # Get a list of all staged files
-staged_files=$(git diff --cached --name-only)
+staged_files="$(git diff --cached --name-only)"
 # Hash (IPFS CID) the contents of each staged file, to the pipe
-for file in $staged_files; do
+for file in "$staged_files"; do
     if [ -f "$file" ]; then
         file_cid=$(ipfs add -q --only-hash "$file")
         echo "$file"": ""$file_cid" >> .gitmeta-cid &
