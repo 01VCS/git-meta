@@ -1,4 +1,4 @@
-- local (repo) or global (home folder) settings.json, containing IPFS preference (now deactivated by default) and folderstamp preference (also deactivated by default) ; global settings overhide repo settings when committing
+- local (repo) or global (home folder) settings.json, containing folderstamp preference (deactivated by default) ; global settings overhide repo settings when committing
 - settings: option to run folderstamp on every commit
 - show release version in .gitmeta (r3) and .gitmeta-cid (r2)
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
