@@ -1,4 +1,5 @@
-- if .git/hooks/pre-commit exists: don't anymore use cat, but append from another file!
+- local (repo) or global (home folder) settings.json, containing IPFS preference (now deactivated by default) and folderstamp preference (also deactivated by default) ; global settings overhide repo settings when committing
+- settings: option to run folderstamp on every commit
 - show release version in .gitmeta (r3) and .gitmeta-cid (r2)
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
 
@@ -11,17 +12,17 @@
 
 - new feature: eth-post on every commit (only post diff of files, serialized)
 
-- before going on the next tasks: make this project in the "pla-woke-license", preventing use in projects related to ppl like Elon Musk; GPT should help write it in a conciser manner
+- before going on the next tasks: make this project in the "pla-woke-license", preventing use in projects related to ppl like Elon Musk; GPT+Bard should help write it in a conciser manner
 
 - https://github.com/gitcnd/git-meta.git: merge the latest commits /media/daniella/B/git/nerdy DAOs/01VCS/git-meta/to-merge
 
-- init.sh: use /hooks folder rather than hardwriting!
-
--? settings: option to run folderstamp on every commit
+-? init.sh: use /hooks folder rather than hardwriting!
 
 - init.sh: if no .git repo present, init using 01
 
 - test on Termux
+
+- detect if the repo's disk is incompatible with symlinks, so use cp instead of ln
 
 - 01 git-meta endgame: parse .git-meta and find tree files on it on every commit, then apply timestamps on checkout! - "git restore" should also restore file timestamps! (same for git checkout)
 
