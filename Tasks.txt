@@ -6,8 +6,8 @@
 
 - in the first commit at /media/daniella/B/git/nerdy DAOs/FilePeace/file-protection-standards, .gitmeta didn't recognize .folderstamp files and .gitmeta-cid did but as .gitmeta it didn't recognize "Untitled Document" too!
 
-- geth integration copyright commit's cid
-- init.sh: complete the ETH commit signing feature! (author eth account + commit cid signature -> .gitmeta!)
+- ethereal integration copyright commit's cid
+- init.sh: complete the ETH commit signing (but replace geth to ethereal) feature! (author eth account + commit cid signature -> .gitmeta!)
 
 - new feature: eth-post on every commit (only post diff of files, serialized)
 
