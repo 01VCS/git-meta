@@ -1,12 +1,14 @@
-- issue/bug: gitmeta-cid supports only files that don't have spaces/special characters
-- https://github.com/gitcnd/git-meta.git: merge the latest commits /media/daniella/B/git/nerdy DAOs/01VCS/git-meta/to-merge
-
-- before going on the next tasks: make this project in the pla-woke-license, preventing use in projects related to ppl like Elon Musk; GPT should help write it in a conciser manner
-
-- Better calc of each contributors' added lines/code. As seen here: https://github.com/01VCS/git-meta/graphs/contributors. So, make better credit commits, with all automatic code, attributed to each author, from the original gist.
+- create git hook not stuck anymore
+- cid storing stable ; geth integration copyright commit's cid
 
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
 - init.sh: complete the ETH commit signing feature! (author eth account + commit cid signature -> .gitmeta!)
+
+-? issue/bug: gitmeta-cid supports only files that don't have spaces/special characters
+
+- before going on the next tasks: make this project in the "pla-woke-license", preventing use in projects related to ppl like Elon Musk; GPT should help write it in a conciser manner
+
+- https://github.com/gitcnd/git-meta.git: merge the latest commits /media/daniella/B/git/nerdy DAOs/01VCS/git-meta/to-merge
 
 - init.sh: use /hooks folder rather than hardwriting!
 
@@ -18,3 +20,5 @@
 
 - "git restore" should also restore file timestamps! (same for git checkout)
 01 git-meta endgame: parse .git-meta and find tree files on it on every commit, then apply timestamps on checkout!
+
+- Better calc of each contributors' added lines/code. As seen here: https://github.com/01VCS/git-meta/graphs/contributors. So, make better credit commits, with all automatic code, attributed to each author, from the original gist.
