@@ -3,15 +3,11 @@ Branch: main
 
 ------------------------------
 
-chown -h 1000:1000 './(test Test)'
-chmod 0664 './(test Test)'
-/usr/bin/touch -hcmd "2024-03-15 17:57:26.7113822000 -0300" './(test Test)'
-/usr/bin/touch -hcad "2024-03-15 17:57:51.4079658000 -0300" './(test Test)'
-chown -h 1000:1000 './.folderstamp3'
-chmod 0664 './.folderstamp3'
-/usr/bin/touch -hcmd "2024-03-15 17:57:51.5639695000 -0300" './.folderstamp3'
-/usr/bin/touch -hcad "2024-03-15 17:57:58.5881334000 -0300" './.folderstamp3'
-chown -h 1000:1000 './Untitled Document'
-chmod 0664 './Untitled Document'
-/usr/bin/touch -hcmd "2024-03-15 17:57:40.4637086000 -0300" './Untitled Document'
-/usr/bin/touch -hcad "2024-03-15 17:57:51.5559693000 -0300" './Untitled Document'
+chown -h 1000:1000 './(testTest)'
+chmod 0664 './(testTest)'
+/usr/bin/touch -hcmd "2024-03-15 17:57:26.7113822000 -0300" './(testTest)'
+/usr/bin/touch -hcad "2024-03-15 17:57:51.4079658000 -0300" './(testTest)'
+chown -h 1000:1000 './UntitledDocument'
+chmod 0664 './UntitledDocument'
+/usr/bin/touch -hcmd "2024-03-15 17:57:40.4637086000 -0300" './UntitledDocument'
+/usr/bin/touch -hcad "2024-03-15 17:57:51.5559693000 -0300" './UntitledDocument'
