@@ -2,9 +2,7 @@
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
 - bug fix issue of every 2nd commit modifying meta files
 
--? cid storing stable
-
--? issue/bug: gitmeta-cid supports only files that don't have spaces/special characters
+- in the first commit at /media/daniella/B/git/nerdy DAOs/FilePeace/file-protection-standards, .gitmeta didn't recognize .folderstamp files and .gitmeta-cid did but as .gitmeta it didn't recognize "Untitled Document" too!
 
 - geth integration copyright commit's cid
 - init.sh: complete the ETH commit signing feature! (author eth account + commit cid signature -> .gitmeta!)
