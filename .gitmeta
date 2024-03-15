@@ -1,4 +1,4 @@
-commit QmdhiHoLoMeHK3pPzkekoMMRdu7kxv3HazK6naunPWHDBA
+commit QmXL47W2xXyGYKfarp1t9FCriccqqfacxzSQ1aFvdmp4YF
 Branch: main
 
 ------------------------------
@@ -10,19 +10,7 @@ This folder: /media/daniella/B/git/nerdy DAOs/01VCS/git-meta
 
 ------------------------------
 
-chown -h 1000:1000 './(test Test)'
-chmod 0664 './(test Test)'
-/usr/bin/touch -hcmd "2024-03-15 17:57:26.7113822000 -0300" './(test Test)'
-/usr/bin/touch -hcad "2024-03-15 17:57:51.4079658000 -0300" './(test Test)'
-chown -h 1000:1000 './Tasks.txt'
-chmod 0755 './Tasks.txt'
-/usr/bin/touch -hcmd "2024-03-15 18:27:00.5099020000 -0300" './Tasks.txt'
-/usr/bin/touch -hcad "2024-03-15 18:27:26.9683648000 -0300" './Tasks.txt'
-chown -h 1000:1000 './Untitled Document'
-chmod 0664 './Untitled Document'
-/usr/bin/touch -hcmd "2024-03-15 17:57:40.4637086000 -0300" './Untitled Document'
-/usr/bin/touch -hcad "2024-03-15 17:57:51.5559693000 -0300" './Untitled Document'
 chown -h 1000:1000 './pre-commit'
 chmod 0664 './pre-commit'
-/usr/bin/touch -hcmd "2024-03-15 18:26:29.8837800000 -0300" './pre-commit'
-/usr/bin/touch -hcad "2024-03-15 18:27:08.5614260000 -0300" './pre-commit'
+/usr/bin/touch -hcmd "2024-03-15 18:32:18.3316431000 -0300" './pre-commit'
+/usr/bin/touch -hcad "2024-03-15 18:32:27.9913280000 -0300" './pre-commit'
