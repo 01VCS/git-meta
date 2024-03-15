@@ -1,11 +1,17 @@
-- show release version in .gitmeta (r3) and .gitmeta-cid (r2)
 - bug fix: create git hook not stuck anymore (now creating from file instead of cat eof)
-- cid storing stable ; geth integration copyright commit's cid
 
+- show release version in .gitmeta (r3) and .gitmeta-cid (r2)
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
-- init.sh: complete the ETH commit signing feature! (author eth account + commit cid signature -> .gitmeta!)
+- bug fix issue of every 2nd commit modifying meta files
+
+-? cid storing stable
 
 -? issue/bug: gitmeta-cid supports only files that don't have spaces/special characters
+
+- geth integration copyright commit's cid
+- init.sh: complete the ETH commit signing feature! (author eth account + commit cid signature -> .gitmeta!)
+
+- new feature: eth-post on every commit (only post diff of files, serialized)
 
 - before going on the next tasks: make this project in the "pla-woke-license", preventing use in projects related to ppl like Elon Musk; GPT should help write it in a conciser manner
 
@@ -13,13 +19,12 @@
 
 - init.sh: use /hooks folder rather than hardwriting!
 
-- settings: option to run folderstamp on every commit
+-? settings: option to run folderstamp on every commit
 
 - init.sh: if no .git repo present, init using 01
 
 - test on Termux
 
-- "git restore" should also restore file timestamps! (same for git checkout)
-01 git-meta endgame: parse .git-meta and find tree files on it on every commit, then apply timestamps on checkout!
+- 01 git-meta endgame: parse .git-meta and find tree files on it on every commit, then apply timestamps on checkout! - "git restore" should also restore file timestamps! (same for git checkout)
 
 - Better calc of each contributors' added lines/code. As seen here: https://github.com/01VCS/git-meta/graphs/contributors. So, make better credit commits, with all automatic code, attributed to each author, from the original gist.
