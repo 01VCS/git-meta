@@ -14,6 +14,13 @@ if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
 echo "Branch: $current_branch" > .gitmeta-cid & #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
 # Get a list of all staged files
 staged_files=$(git diff --cached --name-only)
+
+# Exit if no files are staged
+if [ -z "$staged_files" ]; then
+    echo "No files staged. Exiting pre-commit hook."
+    exit 0
+fi
+
 # Hash (IPFS CID) the contents of each staged file, to the pipe
 for file in $staged_files; do
     if [ -f "$file" ]; then
