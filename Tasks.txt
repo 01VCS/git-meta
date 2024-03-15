@@ -1,5 +1,3 @@
-- bug fix issue of every 2nd commit modifying meta files which was enabling useless commits
-
 - local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default) ; global settings overhide repo settings when committing
 - show release version in .gitmeta (r3) and .gitmeta-cid (r2)
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
