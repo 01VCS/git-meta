@@ -1,5 +1,3 @@
-- bug fix: create git hook not stuck anymore (now creating from file instead of cat eof)
-
 - show release version in .gitmeta (r3) and .gitmeta-cid (r2)
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
 - bug fix issue of every 2nd commit modifying meta files
