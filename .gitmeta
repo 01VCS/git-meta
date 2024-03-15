@@ -1,28 +1,18 @@
-commit QmcqZJ7pScdHb8fsXsFG7VAQJYSARqMvBUffjeEKLak7E5
+commit QmdFaAqUxpY258y3wr9e8RKsxWiXeLDpWhyMgeGtU5buPd
 Branch: main
 
 ------------------------------
 
-
-.gitmeta version: r3
-
+.gitmeta version: r4
 This folder: /media/daniella/B/git/nerdy DAOs/01VCS/git-meta
+Remote Name: origin
+Remote URL: https://github.com/01VCS/git-meta.git
 
 ------------------------------
 
-chown -h 1000:1000 './GPTConversation.txt'
-chmod 0664 './GPTConversation.txt'
-/usr/bin/touch -hcmd "2024-03-15 19:24:32.1602338000 -0300" './GPTConversation.txt'
-/usr/bin/touch -hcad "2024-03-15 19:24:35.7081952000 -0300" './GPTConversation.txt'
-chown -h 1000:1000 './Tasks.txt'
-chmod 0755 './Tasks.txt'
-/usr/bin/touch -hcmd "2024-03-15 19:22:07.3698397000 -0300" './Tasks.txt'
-/usr/bin/touch -hcad "2024-03-15 19:25:25.8316517000 -0300" './Tasks.txt'
+Signed-off by: 0xDDfC2e10702d8A781727A34D83B3bb3CA94a3E91
+Signature: 
 chown -h 1000:1000 './pre-commit'
 chmod 0664 './pre-commit'
 /usr/bin/touch -hcmd "2024-03-15 19:20:53.9626776000 -0300" './pre-commit'
 /usr/bin/touch -hcad "2024-03-15 19:20:54.0226769000 -0300" './pre-commit'
-chown -h 1000:1000 './pre-commit.pregpt'
-chmod 0664 './pre-commit.pregpt'
-/usr/bin/touch -hcmd "2024-03-15 18:39:57.7453577000 -0300" './pre-commit.pregpt'
-/usr/bin/touch -hcad "2024-03-15 18:41:19.1162492000 -0300" './pre-commit.pregpt'

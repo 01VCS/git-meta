@@ -7,6 +7,9 @@ echo "Storing files' timestamp, CID/hash; and other files/commit's metadata..."
 commit_author="$(git config user.name)"" <""$(git config user.email)"">" 
 commit_message=$(cat $1)
 current_branch=$(git rev-parse --abbrev-ref HEAD) #from https://dev.to/anibalardid/how-to-check-commit-message-and-branch-name-with-git-hooks-without-any-new-installation-n34
+first_remote_url=$(git remote | head -n 1 | xargs git remote get-url) # Get the first remote's URL
+first_remote_name=$(git remote | head -n 1) # Define the first remote's name
+
 # https://github.com/typicode/husky/discussions/1171
 rocketlaunch_dir=`pwd` #from https://unix.stackexchange.com/a/52919/470623
 
@@ -38,17 +41,23 @@ commit_cid=$(ipfs add -q --only-hash .gitmeta-cid)
 echo "commit ""$commit_cid" > .gitmeta #use ">" instead of ">>" as a way of emptying .gitmeta before writing new commit data
 echo "Branch: ""$current_branch" >> .gitmeta
 echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
-echo "" >> .gitmeta && echo ".gitmeta version: r3" >> .gitmeta && echo "" >> .gitmeta
+echo ".gitmeta version: r4" >> .gitmeta
 echo "This folder: ""$rocketlaunch_dir" >> .gitmeta
+echo "Remote Name: $first_remote_name" >> .gitmeta
+echo "Remote URL: $first_remote_url" >> .gitmeta
+
 echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
 
 # If the .eth file exists, sign the commit data with the Ethereum account
 if [ -f ".git/hooks/.eth" ]; then
     eth_account=$(cat .git/hooks/.eth)
-    signature=$(geth --exec "web3.personal.sign(web3.toHex('$commit_cid'), '$eth_account', null)" attach)
+    signature=$(ethereal signature sign --data="$commit_cid" --passphrase="your_passphrase_here")
+    echo "Signed-off by: $eth_account" >> .gitmeta
+    echo "Signature: $signature" >> .gitmeta
 fi
 
 bash .git/hooks/git-meta --store
 git add .gitmeta
 git add .gitmeta-cid
 echo "Done. Meta has been preserved!"
+
