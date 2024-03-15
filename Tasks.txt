@@ -1,3 +1,4 @@
+- if .git/hooks/pre-commit exists: don't anymore use cat, but append from another file!
 - show release version in .gitmeta (r3) and .gitmeta-cid (r2)
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
 
