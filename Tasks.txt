@@ -1,4 +1,5 @@
-- create git hook not stuck anymore
+- show release version in .gitmeta (r3) and .gitmeta-cid (r2)
+- bug fix: create git hook not stuck anymore (now creating from file instead of cat eof)
 - cid storing stable ; geth integration copyright commit's cid
 
 - .gitmeta: also display the current folder, as folderstamp does and as .gitmeta already does for branch
