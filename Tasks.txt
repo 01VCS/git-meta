@@ -1,3 +1,5 @@
+Sign-off a commit with Ethereum/EVM key! ; .gitmeta display the first remote's URL!
+
 - init.sh: complete the ETH commit signing (but replace geth to ethereal) feature! (author eth account + commit cid signature -> .gitmeta!)
 
 - local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default) ; global settings overhide repo settings when committing
