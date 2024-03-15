@@ -8,10 +8,8 @@ commit_author="$(git config user.name)"" <""$(git config user.email)"">"
 commit_message=$(cat $1)
 current_branch=$(git rev-parse --abbrev-ref HEAD) #from https://dev.to/anibalardid/how-to-check-commit-message-and-branch-name-with-git-hooks-without-any-new-installation-n34
 # https://github.com/typicode/husky/discussions/1171
+rocketlaunch_dir=`pwd` #from https://unix.stackexchange.com/a/52919/470623
 
-if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
-
-echo "Branch: $current_branch" > .gitmeta-cid & #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
 # Get a list of all staged files
 staged_files=$(git diff --cached --name-only)
 
@@ -20,6 +18,13 @@ if [ -z "$staged_files" ]; then
     echo "No files staged. Exiting pre-commit hook."
     exit 0
 fi
+
+if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
+
+echo ".gitmeta-cid version: r2 " > .gitmeta-cid & #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
+echo "Branch: $current_branch" >> .gitmeta-cid &
+echo "" >> .gitmeta-cid && echo "------------------------------" >> .gitmeta-cid && echo "" >> .gitmeta-cid
+echo "Files:" >> .gitmeta-cid &
 
 # Hash (IPFS CID) the contents of each staged file, to the pipe
 for file in "$staged_files"; do
@@ -32,6 +37,9 @@ done
 commit_cid=$(ipfs add -q --only-hash .gitmeta-cid)
 echo "commit ""$commit_cid" > .gitmeta #use ">" instead of ">>" as a way of emptying .gitmeta before writing new commit data
 echo "Branch: ""$current_branch" >> .gitmeta
+echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
+echo "" >> .gitmeta && echo ".gitmeta version: r3" >> .gitmeta && echo "" >> .gitmeta
+echo "This folder: ""$rocketlaunch_dir" >> .gitmeta
 echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
 
 # If the .eth file exists, sign the commit data with the Ethereum account
