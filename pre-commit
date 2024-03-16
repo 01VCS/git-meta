@@ -45,9 +45,10 @@ echo "Branch: ""$current_branch" >> .gitmeta
 if [ -f ".git/hooks/.eth" ]; then
     eth_account=$(cat .git/hooks/.eth)
 #    signature=$(ethereal signature sign --nohash --data="$commit_cid" --signer="$eth_account" --passphrase="your_passphrase_here")
-    signature=$(ethereal signature sign --nohash --data="$commit_cid" --signer="$eth_account" --config ~/.ethereal.json)
+    signature=$(ethereal signature sign --offline --nohash --data="$commit_cid" --signer="$eth_account" --passphrase="$(jq -r '.passphrase' $HOME/.ethereal.json)" --config $HOME/.ethereal.json)
     echo "Signed-off by: $eth_account" >> .gitmeta
     echo "Signature: $signature" >> .gitmeta
+    ethereal signature verify --nohash --data="$commit_cid" --signature="$signature" --signer="$eth_account" #from https://github.com/wealdtech/ethereal?tab=readme-ov-file#signature-signer
 fi
 
 echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
