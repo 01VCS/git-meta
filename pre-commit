@@ -40,21 +40,23 @@ done
 commit_cid=$(ipfs add -q --only-hash .gitmeta-cid)
 echo "commit ""$commit_cid" > .gitmeta #use ">" instead of ">>" as a way of emptying .gitmeta before writing new commit data
 echo "Branch: ""$current_branch" >> .gitmeta
-echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
-echo ".gitmeta version: r4" >> .gitmeta
-echo "This folder: ""$rocketlaunch_dir" >> .gitmeta
-echo "Remote Name: $first_remote_name" >> .gitmeta
-echo "Remote URL: $first_remote_url" >> .gitmeta
-
-echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
 
 # If the .eth file exists, sign the commit data with the Ethereum account
 if [ -f ".git/hooks/.eth" ]; then
     eth_account=$(cat .git/hooks/.eth)
-    signature=$(ethereal signature sign --data="$commit_cid" --passphrase="your_passphrase_here")
+#    signature=$(ethereal signature sign --nohash --data="$commit_cid" --signer="$eth_account" --passphrase="your_passphrase_here")
+    signature=$(ethereal signature sign --nohash --data="$commit_cid" --signer="$eth_account" --config ~/.ethereal.json)
     echo "Signed-off by: $eth_account" >> .gitmeta
     echo "Signature: $signature" >> .gitmeta
 fi
+
+echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
+echo ".gitmeta version: r5" >> .gitmeta
+echo "Local folder: ""$rocketlaunch_dir" >> .gitmeta
+echo "Remote Name: $first_remote_name" >> .gitmeta
+echo "Remote URL: $first_remote_url" >> .gitmeta
+
+echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
 
 bash .git/hooks/git-meta --store
 git add .gitmeta
