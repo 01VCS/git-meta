@@ -1,8 +1,118 @@
-Sign-off a commit with Ethereum/EVM key! ; .gitmeta display the first remote's URL!
+- local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default) and option for ETH sign-off (deactivated by default); global settings overhide repo settings when committing
 
-- init.sh: complete the ETH commit signing (but replace geth to ethereal) feature! (author eth account + commit cid signature -> .gitmeta!)
+URGENT: .gitmeta-cid isn't containing all files .gitmeta do have. Examples:
+.gitmeta:
+chown -h 1000:1000 './.meta/.folderstamp1'
+chmod 0664 './.meta/.folderstamp1'
+/usr/bin/touch -hcmd "2024-03-16 02:05:17.5659195780 -0300" './.meta/.folderstamp1'
+/usr/bin/touch -hcad "2024-03-16 02:05:26.3019655550 -0300" './.meta/.folderstamp1'
+chown -h 1000:1000 './.meta/.folderstamp2'
+chmod 0664 './.meta/.folderstamp2'
+/usr/bin/touch -hcmd "2024-03-16 02:05:29.2979813230 -0300" './.meta/.folderstamp2'
+/usr/bin/touch -hcad "2024-03-16 02:05:33.6740043530 -0300" './.meta/.folderstamp2'
+chown -h 1000:1000 './.meta/Screenshot.png'
+chmod 0664 './.meta/Screenshot.png'
+/usr/bin/touch -hcmd "2024-03-16 02:04:53.2497916070 -0300" './.meta/Screenshot.png'
+/usr/bin/touch -hcad "2024-03-16 02:05:25.2539600390 -0300" './.meta/Screenshot.png'
+chown -h 1000:1000 './PsQueue/Draft_04-03-2024.txt'
+chmod 0664 './PsQueue/Draft_04-03-2024.txt'
+/usr/bin/touch -hcmd "2024-03-06 05:20:17.4614577010 -0300" './PsQueue/Draft_04-03-2024.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1065855680 -0300" './PsQueue/Draft_04-03-2024.txt'
+chown -h 1000:1000 './PsQueue/Draft_18-12-2023.txt'
+chmod 0664 './PsQueue/Draft_18-12-2023.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:06:51.1436397070 -0300" './PsQueue/Draft_18-12-2023.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1105855890 -0300" './PsQueue/Draft_18-12-2023.txt'
+chown -h 1000:1000 './PsQueue/Draft_2023-1.txt'
+chmod 0664 './PsQueue/Draft_2023-1.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:10:04.8604910060 -0300" './PsQueue/Draft_2023-1.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1105855890 -0300" './PsQueue/Draft_2023-1.txt'
+chown -h 1000:1000 './PsQueue/Draft_2023-2.txt'
+chmod 0664 './PsQueue/Draft_2023-2.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:09:26.6440901820 -0300" './PsQueue/Draft_2023-2.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1105855890 -0300" './PsQueue/Draft_2023-2.txt'
+chown -h 1000:1000 './PsQueue/Draft_2023-3.txt'
+chmod 0664 './PsQueue/Draft_2023-3.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:08:47.0029557030 -0300" './PsQueue/Draft_2023-3.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1145856100 -0300" './PsQueue/Draft_2023-3.txt'
+chown -h 1000:1000 './PsQueue/Draft_21-12-2023.txt'
+chmod 0664 './PsQueue/Draft_21-12-2023.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:05:46.2170646920 -0300" './PsQueue/Draft_21-12-2023.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1145856100 -0300" './PsQueue/Draft_21-12-2023.txt'
+chown -h 1000:1000 './PsQueue/Draft_23-02-2024.txt'
+chmod 0664 './PsQueue/Draft_23-02-2024.txt'
+/usr/bin/touch -hcmd "2024-03-04 05:59:38.4801777250 -0300" './PsQueue/Draft_23-02-2024.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1145856100 -0300" './PsQueue/Draft_23-02-2024.txt'
+chown -h 1000:1000 './PsQueue/Draft_27-12-2023.txt'
+chmod 0664 './PsQueue/Draft_27-12-2023.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:05:10.9556638030 -0300" './PsQueue/Draft_27-12-2023.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1185856310 -0300" './PsQueue/Draft_27-12-2023.txt'
+chown -h 1000:1000 './PsQueue/Draft_29-01-2024.txt'
+chmod 0664 './PsQueue/Draft_29-01-2024.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:02:48.0436068390 -0300" './PsQueue/Draft_29-01-2024.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1185856310 -0300" './PsQueue/Draft_29-01-2024.txt'
+chown -h 1000:1000 './PsQueue/Draft_anotherunknown.txt'
+chmod 0664 './PsQueue/Draft_anotherunknown.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:08:07.0851017560 -0300" './PsQueue/Draft_anotherunknown.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1185856310 -0300" './PsQueue/Draft_anotherunknown.txt'
+chown -h 1000:1000 './PsQueue/Draft_find-tx+COMMIT.txt'
+chmod 0664 './PsQueue/Draft_find-tx+COMMIT.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:00:26.2630489570 -0300" './PsQueue/Draft_find-tx+COMMIT.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1185856310 -0300" './PsQueue/Draft_find-tx+COMMIT.txt'
+chown -h 1000:1000 './PsQueue/Draft_findtx.txt'
+chmod 0664 './PsQueue/Draft_findtx.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:03:37.9564021940 -0300" './PsQueue/Draft_findtx.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1185856310 -0300" './PsQueue/Draft_findtx.txt'
+chown -h 1000:1000 './PsQueue/Draft_tamicopyrighting.txt'
+chmod 0664 './PsQueue/Draft_tamicopyrighting.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:01:25.5056252870 -0300" './PsQueue/Draft_tamicopyrighting.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1185856310 -0300" './PsQueue/Draft_tamicopyrighting.txt'
+chown -h 1000:1000 './PsQueue/Draft_unknown.txt'
+chmod 0664 './PsQueue/Draft_unknown.txt'
+/usr/bin/touch -hcmd "2024-03-04 06:02:00.3447776760 -0300" './PsQueue/Draft_unknown.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1185856310 -0300" './PsQueue/Draft_unknown.txt'
+chown -h 1000:1000 './PsQueue/PsQueue.txt'
+chmod 0664 './PsQueue/PsQueue.txt'
+/usr/bin/touch -hcmd "2024-03-09 21:08:16.7920536660 -0300" './PsQueue/PsQueue.txt'
+/usr/bin/touch -hcad "2024-03-16 02:07:24.1185856310 -0300" './PsQueue/PsQueue.txt'
+chown -h 1000:1000 './Tasks/1.Today'
+chmod 0777 './Tasks/1.Today'
+/usr/bin/touch -hcmd "2024-03-16 00:16:45.3815057020 -0300" './Tasks/1.Today'
+/usr/bin/touch -hcad "2024-03-16 02:00:25.6243832930 -0300" './Tasks/1.Today'
+chown -h 1000:1000 './Tasks/3.Events/Financial recovery/items/House/Cozy/Sandwiches/Atelie-peitoperuCremoso'
+chmod 0664 './Tasks/3.Events/Financial recovery/items/House/Cozy/Sandwiches/Atelie-peitoperuCremoso'
+/usr/bin/touch -hcmd "2024-03-15 23:50:00.2837060750 -0300" './Tasks/3.Events/Financial recovery/items/House/Cozy/Sandwiches/Atelie-peitoperuCremoso'
+/usr/bin/touch -hcad "2024-03-16 02:00:25.6323833350 -0300" './Tasks/3.Events/Financial recovery/items/House/Cozy/Sandwiches/Atelie-peitoperuCremoso'
+chown -h 1000:1000 './Tasks/3.Events/Financial recovery/items/House/Farm/Plants/.folderstamp1'
+chmod 0664 './Tasks/3.Events/Financial recovery/items/House/Farm/Plants/.folderstamp1'
+/usr/bin/touch -hcmd "2024-03-15 23:52:30.3219237090 -0300" './Tasks/3.Events/Financial recovery/items/House/Farm/Plants/.folderstamp1'
+/usr/bin/touch -hcad "2024-03-16 02:00:35.4524350050 -0300" './Tasks/3.Events/Financial recovery/items/House/Farm/Plants/.folderstamp1'
+chown -h 1000:1000 './Tasks/3.Events/Financial recovery/items/House/Farm/Plants/Pitaya'
+chmod 0664 './Tasks/3.Events/Financial recovery/items/House/Farm/Plants/Pitaya'
+/usr/bin/touch -hcmd "2024-03-15 23:53:24.2986990710 -0300" './Tasks/3.Events/Financial recovery/items/House/Farm/Plants/Pitaya'
+/usr/bin/touch -hcad "2024-03-16 02:00:42.6484728680 -0300" './Tasks/3.Events/Financial recovery/items/House/Farm/Plants/Pitaya'
+.gitmeta-cid however:
+.meta/.folderstamp1: QmckwdcR3c9LHXUzHMKwnNWpN76KazdmLQhRew7vMKFqUN
+.meta/.folderstamp2: QmNQm94c9DteGPpFLuQUm7BEj5PVJjnRmA1pLtzaKokWqK
+.meta/Screenshot.png: QmViWwMCiYL4DqCMqoDnQnN5w1sKS6mfh6UDNoDhFZEbqD
+PsQueue/Draft_04-03-2024.txt: QmQgsykKJSPoNpfmFyCH8Ar7YjpWFNQRfbSkSaHEWzb9M5
+PsQueue/Draft_18-12-2023.txt: QmQrjSB4CurZKW1gc8WqwnWK7TsgcFsSHgKEydmuaXhqgM
+PsQueue/Draft_2023-1.txt: QmZjYC3CieSnofxnszcyJnGd7zCnarhAwsfhi2fDDSUB62
+PsQueue/Draft_2023-2.txt: QmaqSEiAU8YLrZXooo5CTFNzeydt6jKGtbTzRon3QUwDqX
+PsQueue/Draft_2023-3.txt: QmXSu8ey1PtoRad7A2p5m6QBK9MZ9JMtHwotXSVbRxYSpN
+PsQueue/Draft_21-12-2023.txt: QmWbtzJuJMYQA1bwABLG69ywMCeycBDmk57HRqdvN5X35j
+PsQueue/Draft_23-02-2024.txt: QmTzR5Zv2mmzH4ipybhsoc9AnD175TyvKEeTCcKZcnvtwE
+PsQueue/Draft_27-12-2023.txt: QmdrU1YWZgNKeA1ZqkTo864UumSb6Ts9UHAjdK1EQen8Bh
+PsQueue/Draft_29-01-2024.txt: QmaGi4DbJCfMd2HUF8gfMCaxnnf2c6NWZyvhPMkike8vpn
+PsQueue/Draft_anotherunknown.txt: QmWsuPK9GihNmup6ucJ46Uo7eUcN8tPcgkegzjLTGp8fbS
+PsQueue/Draft_find-tx+COMMIT.txt: Qmf9nKuo8MUmThK2BnxRKGZcZ5qSXv99D5FtDnHSXTcnrG
+PsQueue/Draft_findtx.txt: QmPpJWeFftX7NnvaXWGvwmtsyPbzKJKUjD7yXb3Kbg2G1s
+PsQueue/Draft_tamicopyrighting.txt: Qmd27oY1BTGbkBTpgDi9F2ax42XVuvV9tiiNpKzTjBGW9L
+PsQueue/Draft_unknown.txt: QmYvcUX7XZE2dnEmr2UaEv37bzC1LvwyVibJWJNArjfSKJ
+PsQueue/PsQueue.txt: QmWw6sYbiDbH7WRFhrAgXfqkpmJDr6msWcjPrhyTgQNjo1
+Tasks/1.Today: QmdogE9XSkn6YQrRGzAhmYeSjqvDdnrA8KCXwfak7XLDmc
 
-- local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default) ; global settings overhide repo settings when committing
+verify eth signature reference:
+https://github.com/wealdtech/ethereal?tab=readme-ov-file#signature-signer
 
 - in the first commit at /media/daniella/B/git/nerdy DAOs/FilePeace/file-protection-standards, .gitmeta didn't recognize .folderstamp files and .gitmeta-cid did but as .gitmeta it didn't recognize "Untitled Document" too!
 
