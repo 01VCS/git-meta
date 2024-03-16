@@ -7,8 +7,8 @@ echo "🤓📝 Storing files' timestamp, CID/hash; and other files/commit's meta
 commit_author="$(git config user.name)"" <""$(git config user.email)"">" 
 commit_message=$(cat $1)
 current_branch=$(git rev-parse --abbrev-ref HEAD) #from https://dev.to/anibalardid/how-to-check-commit-message-and-branch-name-with-git-hooks-without-any-new-installation-n34
-first_remote_url=$(git remote | head -n 1 | xargs git remote get-url) # Get the first remote's URL
 first_remote_name=$(git remote | head -n 1) # Define the first remote's name
+first_remote_url=$(git remote | head -n 1 | xargs git remote get-url) # Get the first remote's URL
 
 # https://github.com/typicode/husky/discussions/1171
 rocketlaunch_dir=`pwd` #from https://unix.stackexchange.com/a/52919/470623
@@ -24,8 +24,11 @@ fi
 
 if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
 
-echo ".gitmeta-cid version: r2 " > .gitmeta-cid #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
+previous_commit_cid=$(ipfs add -q --only-hash .gitmeta-cid)
+
+echo ".gitmeta-cid version: r3 " > .gitmeta-cid #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
 echo "Branch: $current_branch" >> .gitmeta-cid
+echo "Previous commit: $previous_commit_cid" >> .gitmeta-cid
 echo "" >> .gitmeta-cid && echo "------------------------------" >> .gitmeta-cid && echo "" >> .gitmeta-cid
 echo "Files:" >> .gitmeta-cid
 
