@@ -70,5 +70,6 @@ echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo
 bash .git/hooks/git-meta --store
 git add .gitmeta
 git add .gitmeta-cid
-echo "Done. Meta has been preserved!"
+echo "✅ Done. Meta has been preserved!"
+echo "🎉 Your snapshot/commit is done!"
 

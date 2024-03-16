@@ -113,7 +113,9 @@ Tasks/1.Today: QmdogE9XSkn6YQrRGzAhmYeSjqvDdnrA8KCXwfak7XLDmc
 
 - new feature: eth-post on every commit (only post diff of files, serialized) - ethereal integration copyright commit's cid
 
-- if found, display an ETH address' ENS name, so address now will be in parenthesis (.gitmeta version: r6)
+.gitmeta version: r6:
+- if found, display an ETH address' ENS name, so address now will be in parenthesis
+- new feature: display a blockchain block+tx, proving a commit came after and not before an event (dunno why it would be useful)
 
 - local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default); global settings overhide repo settings when committing
 
