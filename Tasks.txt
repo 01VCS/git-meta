@@ -1,4 +1,4 @@
-- local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default) and option for ETH sign-off (deactivated by default); global settings overhide repo settings when committing
+- in the first commit at /media/daniella/B/git/nerdy DAOs/FilePeace/file-protection-standards, .gitmeta didn't recognize .folderstamp files and .gitmeta-cid did but as .gitmeta it didn't recognize "Untitled Document" too!
 
 URGENT: .gitmeta-cid isn't containing all files .gitmeta do have. Examples:
 .gitmeta:
@@ -111,12 +111,11 @@ PsQueue/Draft_unknown.txt: QmYvcUX7XZE2dnEmr2UaEv37bzC1LvwyVibJWJNArjfSKJ
 PsQueue/PsQueue.txt: QmWw6sYbiDbH7WRFhrAgXfqkpmJDr6msWcjPrhyTgQNjo1
 Tasks/1.Today: QmdogE9XSkn6YQrRGzAhmYeSjqvDdnrA8KCXwfak7XLDmc
 
-verify eth signature reference:
-https://github.com/wealdtech/ethereal?tab=readme-ov-file#signature-signer
-
-- in the first commit at /media/daniella/B/git/nerdy DAOs/FilePeace/file-protection-standards, .gitmeta didn't recognize .folderstamp files and .gitmeta-cid did but as .gitmeta it didn't recognize "Untitled Document" too!
-
 - new feature: eth-post on every commit (only post diff of files, serialized) - ethereal integration copyright commit's cid
+
+- if found, display an ETH address' ENS name, so address now will be in parenthesis (.gitmeta version: r6)
+
+- local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default); global settings overhide repo settings when committing
 
 - before going on the next tasks: make this project in the "pla-woke-license", preventing use in projects related to ppl like Elon Musk; GPT+Bard should help write it in a conciser manner
 
