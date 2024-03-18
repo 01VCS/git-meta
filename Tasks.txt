@@ -111,15 +111,16 @@ PsQueue/Draft_unknown.txt: QmYvcUX7XZE2dnEmr2UaEv37bzC1LvwyVibJWJNArjfSKJ
 PsQueue/PsQueue.txt: QmWw6sYbiDbH7WRFhrAgXfqkpmJDr6msWcjPrhyTgQNjo1
 Tasks/1.Today: QmdogE9XSkn6YQrRGzAhmYeSjqvDdnrA8KCXwfak7XLDmc
 
-- eth.json config at .git/hooks, containing the will to eth-post git CIDs, commit diffs or both (and what network to post to, each)
+- add the commit md of previous commit!
+-? eth.json config at .git/hooks, containing the will to eth-post git CIDs, commit diffs or both (and what network to post to, each)
+- local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default); global settings overhide repo settings when committing
 - new feature: eth-post the commit's CID
 - new feature: eth-post on every commit (only post diff of files, serialized) - ethereal integration copyright commit's cid
 
-.gitmeta version: r6:
+.gitmeta version: r?:
 - if found, display an ETH address' ENS name, so address now will be in parenthesis
-- new feature: display a blockchain block+tx, proving a commit came after and not before an event (dunno why it would be useful)
 
-- local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default); global settings overhide repo settings when committing
+
 
 - before going on the next tasks: make this project in the "pla-woke-license", preventing use in projects related to ppl like Elon Musk; GPT+Bard should help write it in a conciser manner
 
