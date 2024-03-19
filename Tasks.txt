@@ -1,7 +1,4 @@
-add the commit md(2?) of previous commit (classic git hash)!
-
-.gitmeta version: r4:
-- if found, display an ETH address' ENS name, so address now will be in parenthesis
+add the commit md(2?) of previous commit (classic git hash)! ; if found, display an ETH address' ENS name, so address now will be in parenthesis
 
 -? eth.json config at .git/hooks, containing the will to eth-post git CIDs, commit diffs or both (and what network to post to, each)
 - local (repo) or global (home folder) settings.json, containing option to run folderstamp on every commit (deactivated by default); global settings overhide repo settings when committing

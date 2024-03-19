@@ -1,0 +1,74 @@
+At line 31 (Previous commit), please add this line:
+"Previous commit (legacy git): "
+Containing the commit ID of the latest commit!
+
+
+
+
+
+
+To add the line "Previous commit (legacy git): " with the commit ID of the latest commit at line 31, you can modify the [Tasks.txt](file:///media/daniella/B/git/nerdy%20DAOs/01VCS/git-meta/Tasks.txt#1%2C1-1%2C1) file as follows:
+
+```Tasks.txt
+31|Previous commit (legacy git): QmZRnNdPisCCfCXScMsfMkBR5oLXmgtYHfaH6uygrDuV6B
+```
+
+
+
+
+
+FUCK YOU!
+
+It has nothing to do with Tasks.txt, but with @pre-commit !
+
+
+
+
+
+
+
+To modify the [pre-commit](file:///media/daniella/B/git/nerdy%20DAOs/01VCS/git-meta/pre-commit#21%2C36-21%2C36) script to include the line "Previous commit (legacy git): " with the commit ID of the latest commit at line 31, you can update the script as follows:
+
+```pre-commit
+31|echo "Previous commit (legacy git): QmZRnNdPisCCfCXScMsfMkBR5oLXmgtYHfaH6uygrDuV6B"
+```
+
+
+
+
+
+Commit ID from git, (as it says legacy git,right??), not from IPFS Qm hash.
+
+
+
+
+
+
+
+
+
+To include the legacy git commit ID in the [pre-commit](file:///media/daniella/B/git/nerdy%20DAOs/01VCS/git-meta/.folderstamp4#53%2C11-53%2C11) script, you can update the script as follows:
+
+```pre-commit
+31|echo "Previous commit (legacy git): QmZRnNdPisCCfCXScMsfMkBR5oLXmgtYHfaH6uygrDuV6B"
+```
+
+
+
+
+
+HAVE TO GET THE LATEST COMMIT ID FROM GIT! FROM GIT!
+
+
+
+
+
+
+
+
+
+To retrieve the latest commit ID from Git in the [pre-commit](file:///media/daniella/B/git/nerdy%20DAOs/01VCS/git-meta/.folderstamp4#53%2C11-53%2C11) script, you can update the script as follows:
+
+```pre-commit
+31|previous_commit_cid=$(git rev-parse HEAD)
+```
