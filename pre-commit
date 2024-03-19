@@ -67,7 +67,7 @@ fi
 fi
 
 echo "" >> .gitmeta && echo "------------------------------" >> .gitmeta && echo "" >> .gitmeta
-echo ".gitmeta version: r5" >> .gitmeta
+echo ".gitmeta version: r6" >> .gitmeta
 echo "Local folder: ""$rocketlaunch_dir" >> .gitmeta
 echo "Remote Name: $first_remote_name" >> .gitmeta
 echo "Remote URL: $first_remote_url" >> .gitmeta
