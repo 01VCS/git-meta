@@ -25,10 +25,12 @@ fi
 if [ ! -f ".gitmeta-cid" ]; then touch .gitmeta-cid; fi
 
 previous_commit_cid=$(ipfs add -q --only-hash .gitmeta-cid)
+previous_commit_githash=$(git rev-parse HEAD)
 
-echo ".gitmeta-cid version: r3 " > .gitmeta-cid #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
+echo ".gitmeta-cid version: r4 " > .gitmeta-cid #use ">" instead of ">>" as a way of emptying .gitmeta-cid before writing new commit data
 echo "Branch: $current_branch" >> .gitmeta-cid
 echo "Previous commit: $previous_commit_cid" >> .gitmeta-cid
+echo "Previous commit (classic git hash): $previous_commit_githash" >> .gitmeta-cid
 echo "" >> .gitmeta-cid && echo "------------------------------" >> .gitmeta-cid && echo "" >> .gitmeta-cid
 echo "Files:" >> .gitmeta-cid
 
@@ -53,7 +55,12 @@ if [ -f ".git/hooks/.eth" ]; then
 #    signature=$(ethereal signature sign --nohash --data="$commit_cid" --signer="$eth_account" --passphrase="your_passphrase_here")
     echo "🪄 Signing the commit $commit_cid with your choosen ETH address $eth_account..."
     signature=$(ethereal signature sign --offline --nohash --data="$commit_cid" --signer="$eth_account" --passphrase="$(jq -r '.passphrase' $HOME/.ethereal.json)" --config $HOME/.ethereal.json)
-    echo "Signed-off by: $eth_account" >> .gitmeta
+enscheck="$(ethereal ens domain get --address=$eth_account)"
+if [ "$enscheck" = "Failed to check reverse resolution: not a resolver" ]; then
+   echo "Signed-off by: $eth_account" >> .gitmeta
+else
+   echo "Signed-off by: $enscheck ($eth_account)" >> .gitmeta
+fi
     echo "Signature: $signature" >> .gitmeta
     echo "🔦 Verifying signature..."
     ethereal signature verify --nohash --data="$commit_cid" --signature="$signature" --signer="$eth_account" #from https://github.com/wealdtech/ethereal?tab=readme-ov-file#signature-signer
@@ -72,4 +79,3 @@ git add .gitmeta
 git add .gitmeta-cid
 echo "✅ Done. Meta has been preserved!"
 echo "🎉 Your snapshot/commit is done!"
-
